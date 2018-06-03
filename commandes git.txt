@@ -1,0 +1,200 @@
+// initialiser un projet
+git init 
+
+// récupér un projet existant
+git clone chemin-du-projet
+
+// ajouter un ficher 
+// pour l'indexer
+// STAGED
+git add nom-du-fichier
+git add .
+
+// enlever un fichier 
+// de l'index
+// attibue le status modified
+git reset HEAD nom-du-fichier
+
+// connaître l'état
+// des fichiers
+git status
+git status -s
+
+// exclure des fichiers
+// dans le fichier .gitignore
+
+// voir les modifications
+// pas encore indexées
+git diff
+
+// voir modification depuis le dernier commit
+git diff --cached
+
+// archiver
+git commit
+
+// archiver en rajoutant
+// le diff en comment
+git commit -v 
+// archiver en rentrant 
+// manuellement un comment
+git commit -m "un commentaire"
+// ajouter les fichiers traqués
+// lors du commit
+git commit -a
+// correction du dernier commit
+git commit --amend
+
+// effacer un fichier qui n'existe plus
+git rm nom-du-fichier
+// voir l'historique
+git log
+// avec les x derniers
+git log -x
+// avec style
+git -log --pretty=[online, ..]
+
+
+**************************************************
+DANGER IRREVERSIBLE
+
+// revenir à la version du dernier commit
+git checkout -- nom-du-fichier
+
+**************************************************
+
+// visualiser les dêpots distants
+git remote
+// avec l'url
+git remote -v
+
+// ajouter un dêpot distant
+git remote add nom-du-dêpot lien-du-dêpot
+
+// récupérer des données d'un dêpot distants
+git fetch nom-du-dêpot
+
+// pousser un dêpot vers un dêpot distants
+git push nom-dêpot-distant nom-branche
+
+// inspecter un dêpot distant
+git remote show nom-dêpot-distant
+
+// renommer une reference de dêpot distant
+git remote rename acien-nom nouveau-nom
+
+// supprimer une reference
+git remote rm nom-du-dêpot
+
+// lister les étiquettes
+git tag
+
+// créer une étiquette
+git tag -a v0.1 -m "un commentaire"
+
+// voir l'étiquette 
+git show v0.1
+
+// infos sur les branches
+git branch -v
+
+// céer une nouvelle branche
+git branch nom-nouvelle-branche
+
+// voir branches fusionnées / non fusionnées
+git branch --merged
+git branch --no-merged
+
+// voir branches distantes
+git branch -a
+
+// supprimer une branche 
+git branch -d nom-de-la-branche
+
+// voir la branche suivie
+git branch -vv
+
+// changer de branche suivie
+git branch origin/nouvelle-branche
+
+// indique ou est le pointeur HEAD
+git log --oneline  --decorate
+
+// changer de place le pointeur
+git checkout nom-de-la-branche
+
+// créer la branche et se déplacer dessus
+git checkout -b nom-de-la-branche
+// à partir d'un distant
+git checkout -b nom-de-la-branche nom-du-distant/nom-de-la-branche
+
+// visionner les branches
+git log --oneline --decorate --graph --all
+
+// regrouper le pointeur HEAD vers un commit
+// nb fast forward deplace le pointeur vers l'avant
+// Attention : crée un commit
+git merge nom-de-la-branche
+
+// voir les branche distantes
+git ls-remote nom-depot-distant
+
+// pousser une branche
+git push nom-du-distant nom-de-la-branche
+
+// pousser une branche
+git merge nom-du-distant/nom-de-la-branche
+
+// fetch + merge
+git pull
+
+// supprimer branche distantes
+git push origin --delete nom-de-la-branche
+
+// regroupe sans commit 
+git rebase origin/nom-de-la-branche
+
+
+/*__________________________________________________ */
+/*
+/* GITHUB                                             */
+/*
+/*__________________________________________________ */
+
+// recupérer un projet github
+git clone url-du-projet
+
+// valider modification
+git commit -a -m "nom-de-la-modification"
+
+// voir différence entre projet et github
+git diff origin/master
+
+// pousser sur github 
+git push origin
+
+
+/* SUPPRIMER L'HISTORIQUE des COMMIT SUR GITHUB
+# Check out to a temporary branch:
+git checkout --orphan TEMP_BRANCH
+
+# Add all the files:
+git add -A
+
+# Commit the changes:
+git commit -am "Initial commit"
+
+# Delete the old branch:
+git branch -D master
+
+# Rename the temporary branch to master:
+git branch -m master
+
+# Finally, force update to our repository:
+git push -f origin master
+
+// CREER UN GITHUB
+git init
+git commit -m "first commit"
+git remote add origin https://github.com/laurentjassaud/portfolio-2018.git
+git push -u origin master
